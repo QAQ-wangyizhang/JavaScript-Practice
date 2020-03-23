@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div id="only">
+        <p></p>
+    </div>
+    <div></div>
+    <div>
+        <p id="123"></p>
+    </div>
+    <div></div> -->
+    <!-- <div>
+        <strong></strong>
+    </div>
+    <div>
+        <span>
+            <strong class="demo"></strong>
+        </span>
+    </div> -->
+    <div>42421<strong><span></span></strong>
+    <span></span>
+    </div>
+    <div id="123" class="2342"> </div>
+
+    <script type="text/javascript">
+        // var div = document.getElementById('only');
+        // var div = document.getElementsByTagName('div');
+        // var p = document.getElementsByTagName('p');
+        // var strong = document.querySelector('div > span > strong.demo');
+        // var strong1 = document.querySelectorAll('div > span > strong');
+        var div = document.getElementsByTagName('div')[1];
+        function retElementChild(node) {
+            var arr = [],
+                len = node.childNodes.length;
+            for(var i = 0 ; i < len; i++){
+                if (node.childNodes[i].nodeType === 1) {
+                    arr.push(node.childNodes[i]);
+                }
+
+            }
+            return arr;
+
+        }
+        console.log(retElementChild(div));
+    </script>
+    
+</body>
+</html>

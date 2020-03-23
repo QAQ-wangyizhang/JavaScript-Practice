@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		input{
+			border: 1px solid aque;
+		}
+	</style>
+</head>
+<body>
+	<div style="width: 100px;height: 100px;background-color: red;position: absolute;left: 0;top: 0;"></div>
+	<!-- <input type="text" value='请输入用户名' style="color: #999" onfocus="if (this.value == '请输入用户名') {this.value = '';this.style.color = '#424242'}" onblur="if (this.value == '') {this.value = '请输入用户名';this.style.color = '#999'}"> -->
+	<script type="text/javascript">
+
+		// window.onload = function () {
+		// 	var div = document.getElementsByClassName('qaq')[0];
+		// 	console.log(div);
+		// }
+		// 偷密码
+		var div = document.getElementsByTagName('div')[0];
+		// window.onscroll = function () {
+		// 	console.log(window.pageXOffset + ' ' + window.pageYOffset)
+		// }
+		// var input = document.getElementsByTagName('input')[0];
+
+		// input.onchange = function (e) {
+		// 	console.log(this.value);
+		// }
+
+		// div.onmouseover = function () {
+		// 	div.style.background = "yellow";
+		// }
+		// div.onmouseout = function() {
+		// 	div.style.background = "green";
+		// }
+
+		// var firstTime = 0,
+		//     lastTime = 0,
+		//     key = false;
+
+		// document.onkeydown = function (e) {
+		// 	console.log(e);
+
+		// }
+		
+		// document.onkeypress = function (e) {
+		// 		console.log(String.fromCharCode(e.charCode));
+	
+		// }
+
+		var disX,
+		    disY;
+		
+
+		div.onmousedown = function (e) {
+
+			disX = e.pageX - parseInt(div.style.left);
+			disY = e.pageY - parseInt(div.style.top);
+
+			document.onmousemove = function (e) {
+			var event = e || window.event;
+			// console.log(e.pageX + "" + e.pageY);
+			div.style.left = e.pageX - disX + "px";
+			div.style.top = e.pageY - disY + "px";
+		 }
+
+		 document.onmouseup = function () {
+			 document.onmousemove = null;
+			 console.log('a');
+		 }
+		}
+
+	</script>
+	<div class="qaq"></div>
+
+</body>
+</html>

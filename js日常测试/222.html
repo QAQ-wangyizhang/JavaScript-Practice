@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<!-- 
+	<div style="width: 100px;height: 100px;background-color: red;" onclick="console.log('a') "></div> -->
+
+	<div style="width: 100px; height: 100px; background-color: red;"></div>
+
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	<script type="text/javascript">
+		var div = document.getElementsByTagName('div')[0];
+		// div.onclick = function () {
+		// 	this.style.backgroundColor = 'green';
+		// 	console.log('a');
+		// 	this.onclick = null;
+		// }
+		// div.onclick = null;
+
+		div.addEventListener('click',test,false);
+		div.removeEventListener('click',test,false);
+		function test() {
+			console.log('a');
+		}
+		// div.addEventListener('click',function () {
+		// 	console.log(this);//指向dom元素本身
+		// },false);
+
+		//IE独用的
+
+		// div.attachEvent('onclick',function () {
+		// 	console.log('a');
+		// })
+
+		var li = document.getElementsByTagName('li');
+		var len = li.length;
+
+		for(var i = 0; i < len; i ++){
+
+			//事件出现在循环里面一定要考虑闭包
+			(function (i) {
+				li[i].addEventListener('click',function () {
+				console.log(i);
+			},false);
+		}(i))
+	}
+
+	
+
+
+
+
+
+	</script>
+
+</body>
+</html>

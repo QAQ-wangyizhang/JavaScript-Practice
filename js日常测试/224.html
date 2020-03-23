@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded' , function () {
+			var div = document.getElementsByTagName('div')[0];
+			console.log(div); //dom 解析完
+		},false);
+	</script>
+</head>
+
+<body>
+	<div style="width: 100px;height: 100px;background-color: red"></div>
+	<script type="text/javascript">
+		//ie9以下可以用
+		//异步加载JavaScript
+		//和html 和 css异步下载同时下载
+		// var obj = {
+		// 	"name" : "abc",
+		// 	"age" : 123
+		// }
+		// var str = JSON.stringify(obj);
+		// var obj1 = JSON.parse(str);
+
+		// var script = document.createElement('script');
+		// script.type = "text/javascript";
+		// script.src = "tool.js"
+
+		//兼容性非常好IE里面就script没有load
+		// IE状态码
+		// script.readyState = "loaded"
+		// if (script.readyState) {
+		// 	script.onreadystatechange = function () {
+		// 		if (script.readyState == "complete" || script.readyState == "loaded") {
+		// 			test();
+		// 		}
+		// 	}
+		// } else {
+		// 	script.onload = function () {
+		// 		test();
+		// 	}
+		// }
+
+		// document.head.appendChild(script);
+
+		// setTimeout(() => {
+		// 	test();//延迟才能执行
+		// }, 1000);
+		// function loadScript(url, callback) {
+		// 	var script = document.createElement('script');
+		// 	script.type = "text/javascript";
+		// 	if (script.readyState) {
+		// 		script.onreadystatechange = function () {
+		// 			if (script.readyState == "complete" || script.readyState == "loaded") {
+		// 				callback();
+		// 			}
+		// 		}
+		// 	} else {
+		// 		script.onload = function () {
+		// 			callback();
+		// 		}
+		// 	}
+		// 	script.src = url;
+		// 	document.head.appendChild(script);
+		// }
+
+		// loadScript('tool.js', function () {
+		// 	test();
+		// });//为了跳过预编译直接执行
+
+		// window.onload = function () {
+		// 	document.write('a');
+		// } // 消除文档流
+		document.onreadystatechange = function () {
+			console.log(document.readyState);
+		}//dom对象刚建立
+
+		console.log(document.readyState);
+		//loading dom 树未建立完成
+		window.onload = function () {
+			console.log(document.readyState);
+		}//domTree 建立完成
+		document.addEventListener('DOMContentLoaded' , function () {
+			console.log('a');
+		},false);
+
+		
+
+	</script>
+	<!--  domTree + cssTree = randerTree
+		避免重排 reflow
+	reflow 重排 dom 节点的增删
+	       dom节点的宽高变化，位置变化，display noon -> block 
+	       offsetWidth offsetLeft(因为实时 改变ramderTree) -->
+	<!-- repaint 重绘 改东西 可以接受 例如颜色啊什么的 -->
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo"></div>
+    <script>
+        var demo = document.getElementsByClassName('demo')[0];
+        demo.onmousedown = function (e) {
+            var offsetL = demo.offsetLeft;
+            var offsetT = demo.offsetTop;
+            var startX = e.clientX;
+            var startY = e.clientY;
+            console.log(startX, startY)
+            document.onmousemove = function (ev) {
+                console.log(ev.clientX - startX, ev.clientY - startY, startX, startY)
+                demo.style.left = offsetL + ev.clientX - startX + 'px';
+                demo.style.top = offsetT + ev.clientY - startY + 'px' 
+                // console.log(ev)
+            }
+            document.onmouseup = function (ev) {
+                document.onmousemove = null;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .demo{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            margin: 100px auto;
+            /* transform: rotate(45deg); */
+            transform: rotateZ(2deg);
+
+        }
+        .btn{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+            margin: 0 auto;
+            border: 4px solid transparent;
+            /* border-top-color: tomato;
+            border-bottom-color: turquoise;
+            border-left-color: yellow;
+            border-right-color: teal; */
+        }
+        .btn:hover{
+            border-color: aqua;
+            transition: boder-top-color 0.15s linear,
+            boder-right-color 0.15s 0.15s linear,
+            boder-buttom-color 0.15s 0.3s linear,
+            boder-left-color 0.15s 0.45s linear;
+        }
+        .btn::after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid transparent;
+            /* border-top-color: aqua; */
+            transform: rotate(0deg);
+        }
+        .bth:hover::after{
+            border-top-color: aqua;
+            transform: rotate(360);
+            transition: boder-top-color 0.15s linear,
+            boder-right-color 0.15 0.15 linear,
+            boder-buttom-color 0.15 0.3 linear,
+            boder-left-color 0.15 0.45 linear;
+
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="demo">demo</div>
+    <div class="btn">button</div>
+    
+    
+</body>
+</html>

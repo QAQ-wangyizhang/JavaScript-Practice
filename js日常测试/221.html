@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .qaq{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            /* left: 100px;
+            top: 100px; */
+            margin-top: 100px;
+            margin-left: 100px;
+            /* padding: 100px; */
+        }
+
+
+    </style>
+</head>
+<body>
+    <div style="width: 300px;height: 300px; border: 2px solid black;
+    position: static;
+    margin-top: 100px;margin-left: 120px;">
+     <div class="qaq"></div>
+    </div>
+   
+    <script>
+
+        var div = document.getElementsByClassName('qaq')[0];
+
+
+        
+        function getViewportOffset() {
+            if (window.innerWidth) {
+                return {
+                    w : window.innerWidth,
+                    h : window.innerHeight
+                }
+            }else{
+                if (document.compatMode === "CSS1Compat") {
+                    return {
+                        w : document.documentElement.clientWidth,
+                        h : document.documentElement.clientHeight
+                    }
+                }else{
+                    return {
+                        w : document.body.clientWidth,
+                        h : document.body.clientHeight
+                    }
+                }
+            }
+        }
+    </script>
+   
+</body>
+</html>

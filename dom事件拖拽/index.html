@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js之常见事件</title>
+    <style>
+        .demo {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1. 鼠标相关事件
+            click  点击行为
+            mousedown  鼠标按下
+            mouseup  鼠标抬起
+            mousemove  鼠标移动
+            mouseenter  鼠标移入
+            mouseleave  鼠标移除
+
+            触发顺序：
+                mousedown  ->  mouseup -> click
+                鼠标左右按键区别  事件源对象身上的button属性  0 代表左键  1 代表滚轮按键  2 代表右键
+        2. 键盘相关的事件
+        3. 对象的事件
+        4. 表单相关的事件
+     -->
+        <div class="demo">
+            <!-- <div class="box"></div> -->
+        </div>
+  
+
+     <script>
+        //  通过class类名获取dom元素
+        var demo = document.getElementsByClassName('demo')[0];
+        // var box = document.getElementsByClassName('box')[0];
+        // console.log(demo)
+        /*
+            绑定事件的方法： 
+                1. on+事件名称
+                2. addEventListener
+            事件处理函数里面的形式参数 指的是事件源对象  存储着当前触发事件的所有信息包括鼠标的信息以及当前触发事件的对应元素的信息
+                区别： 
+                    1) 绑定事件方式不同    
+                    2) 通过on绑定的事件只能绑定一个事件处理函数
+                       通过addEventListener方法绑定的事件可以绑定多个
+
+            事件冒泡：
+                子元素的事件先触发然后再触发父元素的相同的事件，这个过程叫做事件冒泡
+                阻止冒泡的方式： 
+                    1. 事件捕获
+                    2. 调用事件源对象身上的stopPropagation()方法
+                    3. 为事件元对象身上的cancelBubble属性赋值为true
+            事件捕获：
+                父元素的事件先触发，再触发对应的子元素的相同的事件，这个过程叫做事件捕获
+
+            */
+        // demo.onclick = function (e) {
+        //     console.log(e);
+        //     console.log('点击demo元素了');
+        //     demo.style.display = 'none';
+        // }
+        // box.onclick = function () {
+        //     console.log('我是box的点击行为')
+        // }
+        // box.onclick = function () {
+        //     console.log('我是box的第二个事件处理函数')
+        // }
+        // demo.addEventListener('click', function (e) {
+        //     e.stopPropagation();
+        //     console.log('点击demo元素了');
+        //     demo.style.display = 'none';
+        // })
+        // box.addEventListener('click', function(e) {
+    
+        //     console.log('我是box的点击行为')
+        // })   
+        // box.addEventListener('click', function(e) {
+
+        //     console.log('我是box的第二个事件处理函数')
+        // })
+            demo.onclick = function (e) {
+                console.log('点击')
+            }
+            demo.onmousedown = function (e) {
+                console.log('鼠标按下', e)
+            };
+            demo.onmouseup = function(e) {
+                console.log('鼠标抬起')
+            };
+            demo.onmouseenter = function (e) {
+                console.log('鼠标进来了')
+            }
+            demo.onmouseleave = function (e) {
+                console.log('鼠标进出了')
+            }
+            demo.onmousemove = function (e) {
+                console.log('鼠标在demo上移动')
+            }
+      </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: absolute;
+            margin-top: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        var box = document.getElementsByClassName('box')[0];
+        box.onmousedown = function (e) {
+            var startOffsetX = box.offsetLeft;
+            var startOffsetY = box.offsetTop - 300;
+            var startX = e.clientX;
+            var startY = e.clientY;
+            console.log('start', startX, startY)
+            document.onmousemove = function (ev) {
+                var nowX = ev.clientX;
+                var nowY = ev.clientY;
+                var disX = nowX - startX;
+                var disY = nowY - startY;
+          
+                box.style.left = startOffsetX + disX + 'px';
+                box.style.top = startOffsetY + disY + 'px'
+            }
+            document.onmouseup = function () {
+                document.onmousemove = null;
+            }
+        }
+
+        // pageX = clientX + 水平方向滚动条滚动的距离
+    </script>
+</body>
+</html>

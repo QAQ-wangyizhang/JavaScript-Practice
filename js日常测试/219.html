@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div class="q13122">
+        <p></p>
+        <span></span>
+    </div>
+    <div>
+        <strong>
+            <span>
+                <i></i>
+            </span>
+        </strong>
+    </div> -->
+    <div>
+        <i></i>
+        <span></span>
+        <p></p>
+        <strong></strong>
+        <span></span>
+        
+    </div>
+    <script>
+        // var num = 0;
+        // console.log(num++); 先用后加
+        // //num = num + 1;
+        // //num + 1;
+        // console.log(++num);先加后用
+        // console.log(num);
+
+
+        // document --> HTMLDocument.prototype --> Document
+
+        // HTMLBodyElement.prototype.abc = 'demo';
+        // var body = document.body;
+        // var div = document.getElementsByTagName('div')[1];
+        // function retParent(elem , n) {
+        //     while(elem && n){
+        //         elem = elem.parentElement;
+        //         n --;
+        //     }
+        //     return elem;
+        // }
+        // 
+                    // return true;var i = document.getElementsByTagName('i')[0];
+
+
+        // Element.prototype.myChildren = function () {
+        //     var child = this.childNodes;
+        //     var len = child.length;
+        //     var arr = [];
+        //     for(var i = 0 ; i < len; i++) {
+        //         if (child[i].nodeType == 1) {
+        //             arr.push(child[i]);
+            //     }
+            // }
+            // return arr;
+            // return false;
+        // }
+
+        // function retSibling(e , n) {
+        //     while (e && n) {
+        //         if (n > 0) {
+
+        //             e = e.nextElementSibling;
+        //             n--;
+        //         }else{
+
+        //             e = e.previousElementSibling;
+        //             n++;
+        //         }
+        //     }
+        //     return e;
+        // }
+
+        // var div = document.getElementsByTagName('div')[0];
+        // var text = document.createTextNode('登哥');
+        // div.appendChild(text);
+        // var span = document.createElement('span');
+        // div.appendChild(span);
+        // var text1 = document.createTextNode('demo');
+        // span.appendChild(text1);
+        // span.appendChild(text);
+
+        // var strong = document.createElement('strong');
+        // var div = document.getElementsByTagName('div')[0];
+        // var span = document.getElementsByTagName('span')[0];
+        // div.insertBefore(strong,span);
+        // var i = document.createElement('i');
+
+        // var all = document.getElementsByTagName('*');
+        // for(var i = 0 ; i < all.length ; i ++ ){
+        //     all[i].setAttribute('this-name',all[i].nodeName);
+        // }
+        // document.createElement();
+        // document.createTextNode();
+        // document.createComment();
+        // document.createDocumentFragment();
+
+        // Parentnode.appendChild();
+        // Parentnode.insertBefore(a,b);
+
+        // parent.removeChild();
+        // child.remove();
+        // div.appendChild == push
+        
+
+        // var div = document.createElement('div');
+        // var p = document.createElement('p');
+        // p.innerHTML = "姬成，你最刷！";
+        // var body = document.body;
+        // div.appendChild(p);
+        // body.appendChild(div);
+        // div.setAttribute('class' , 'example');
+        // p.setAttribute('class','slogan');
+
+        //实现inserAfter方法
+        // Element.prototype.insertAfter = function (targetNode , afterNode) {
+        //     var beforeNode = afterNode.nextElementSibling;
+        //     if(beforeNode == null){
+        //         this.appendChild(targetNode);
+        //     }else{
+        //         this.insertBefore(targetNode,beforeNode);
+        //     }
+        // }
+        // var div = document.getElementsByTagName('div')[0];
+        // var p = document.getElementsByTagName('p')[0];
+        // var span = document.createElement('span');
+        // span.setAttribute('class' , 'qaq');
+
+        //标签逆序
+        function res(div) {
+            var len = div.children.length;
+            var child = div.children;
+            for(var i = len - 2; i >= 0;i --){
+                div.appendChild(child[i]);
+            }
+        }
+
+        var div = document.getElementsByTagName('div')[0];
+        var i = document.createElement('i');
+        var p = document.getElementsByTagName('p')[0];
+        var span = document.getElementsByTagName('span')[0];
+
+
+        
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

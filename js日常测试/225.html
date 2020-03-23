@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// var test = "\
+		// <div></div>\
+		// <span></span>\
+		// ";
+		// var str = "abcd\nedf";
+
+		//RegExp
+
+		// var reg = /abc/i;
+		//ignoreCase 忽略大小写
+
+		// var reg1 = new RegExp(reg);
+		// var str = "aBcd";
+
+
+		//表达式 
+
+		// var reg = /^a/gm;
+		//global 全局匹配
+		//多行匹配 + m 
+		// var str = "abababa\nabab";
+		//两个a
+
+		// reg.test();只能返回true和false
+		// str.match();可以返回准确的内容数组
+
+
+		// var reg = /[ab][cd][d]/g;
+		//第一位区间第二位区间第三位...
+		//[^a] 第一位不是a
+		//^a 第一位是a
+		// var reg1 = /[0-9A-z][cd][d]/g;
+		// var str = "ab1cd";
+		// str.match(reg); //"bcd"
+		//str.match(reg1);  //"1cd"
+		
+
+		// var reg = /(abc|bcd)[0-9]/g;
+		// "|" 或运算
+		// var str = "bcd2";
+
+
+
+
+
+		//元字符
+		// \w === [0-9A-z_]
+		// \W === [^\w] 除了\w的所有元素
+		// \d === [0-9]
+		// \D === [^\d]
+		// \s === [\t\n\r\v\f ] 空格所有的
+		// \S === [^\s]
+		// \b === 单词边界
+		// \B === 非单词边界
+		// . === [^\r\n]
+
+
+
+		// var reg = /\bcde\B/g;
+		//c 要是单词边界
+		//e 不是单词边界
+		// var reg1 = /\t/g;
+		//匹配table键空格
+		// var str = "b%cd2";
+		// var str1 = "aBc 	cdefgh";
+
+		// 正则表达式中Unicode编码
+		// \u0000
+		// \u0affff
+		// \u101abe
+
+		// var reg2 = /[\u0000-\uffff]/g;
+		// var str2 = "我想 测试一下";
+		// var reg3 = /[\d\D]/g;
+		//一个集合加上他的补集等于所有
+		// var reg4 = /./g;
+
+
+
+
+		//量词
+		//贪婪匹配原则
+		//能多就不会少
+		//n+ {1, 正无穷infinity}
+		//n* {0, 正无穷infinity}
+		//n? {0,1}
+		//n{x} {x}
+		//n{x,y} {x,y}
+		//n{x,} {x, 正无穷}
+
+		//$ 以什么什么结尾
+		//开头加结尾固定字符串
+
+		// var reg = /\w{1,2}/g;
+		// var str = 'cde';
+		// var reg1 = /^cde$/g;
+
+		//检验一个字符串首尾是否含有数字
+		//或 |
+		//&& === [\s\S]*
+
+		// var reg3 = /^\d|\d$/g;
+		// var str2 = "sdjfjas1";
+
+
+		// RegExp 对象属性
+
+		// var reg = /ab/g;
+		// var str = "ababababab";
+
+
+		// RegExp 对象方法
+
+		// reg.exec(); 不加g游标lastIndex不变
+		//reg.lastIndex 游标索引没匹配一次找index
+		//匹配方法
+
+
+		// 拓展
+		var str = "aaaa";//匹配xxxx
+		//子表达式
+		var reg = /(a)\1\1\1/g;
+		var str1 = "aabb";
+		var reg1 = /(\w)\1(\w)\2/g;
+		console.log(str1.match(reg1));
+		//寻找匹配到的位置
+		console.log(str1.search(reg1));
+		var str2 = "safsfsfskjskjfsfqwfwkfaaaasfksfskkkkkksdfsfsssss";
+		console.log(str2.split(reg));//按照什么进行拆分
+		var str3 = "abacdefsf";
+		console.log(str3.replace("a","b"));
+		//bbacdefsf 只能替换一个没有访问全局的能力
+		var reg3 = "/a/g";
+		console.log(str3.replace(reg, "b"));
+		console.log(str1.replace(reg1, function ($, $1, $2) {
+			return $ + $2 + $1 ;
+		}));
+		//$ = aabb $1 = a $2 = b 第一个为第一个全局表达式
+		//后面都为子表达式
+		//全局匹配替换 加上了g
+	
+		//题
+		//改成小驼峰式的写法
+		//the-first-name --> theFirstName
+
+		var str4 = "the-first-name";
+		var reg4 = /-(\w)/g;
+
+		console.log(str4.replace(reg4, function ($ , $1) {
+			return $1.toUpperCase();
+		}));
+		//匹配多少次这个function就执行多少次
+		//强行替换$ $ 替换$
+		//匹配? /  *匹配变成/? /*  //
+
+		//正向预查 正向断言
+		var str5 = "abaaaa";
+		var reg5 = /a(?=b)/g;//后面跟着b的那个a         a
+		var reg6 = /a(?!b)/g;//后面不是跟着b的那个a  a a a a
+
+
+		//非贪婪匹配的正则表达式 能少尽量别多
+		//打破贪婪匹配后面加问号 ？
+
+		var reg7 = /a*?/g;
+
+		//字符串去重 RegExp
+		var strw = "aaaaaaaaabbbbbcccdddddd";
+		var reg = /(\w)\1*/g;
+		console.log(strw.replace(reg , "$1"));
+
+		//百度最后一道题
+		//科学计数法
+		//变成100.100.100
+		//后面从前面查没三位打一个点
+		var str = "1000000000";
+		var reg = /(?=(\B)(\d{3})+$)/g
+		//正向预查，单词边界不为空，倒数三位。
+		console.log(str.replace(reg, "."));
+		var arr = [function () {
+			// body...
+		},1];
+
+
+
+		
+
+
+
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>
